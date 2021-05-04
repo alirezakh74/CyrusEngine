@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<STATES>
+  
+  <!--The Splash State-->
+  <SPLASHSTATE>
+    <TEXTURES>
+      <texture filename="assets/logo.png" ID="logo_image"/>
+    </TEXTURES>
+
+    <OBJECTS>
+      <object type="ImageObject" x="190" y="150" width="410" height="421"
+				textureID="logo_image" numFrames="0"/>
+    </OBJECTS>
+  </SPLASHSTATE>
+
+	<!--The Main Menu State-->
+	<MAINMENUSTATE>
+		<TEXTURES>
+			<texture filename="assets/play.png" ID="playbutton"/>
+			<texture filename="assets/exit.png" ID="exitbutton"/>
+		</TEXTURES>
+		
+		<OBJECTS>
+			<object type="MenuButton" x="200" y="200" width="400" height="100" textureID="playbutton" numFrames="0" callbackID="1"/>
+			<object type="MenuButton" x="200" y="350" width="400" height="100" textureID="exitbutton" numFrames="0" callbackID="2"/>
+		</OBJECTS>
+	</MAINMENUSTATE>
+	
+	<!--The Play State-->
+	<PLAYSTATE>
+		<TEXTURES>
+			<texture filename="assets/helicopter.png" ID="helicopter"/>
+			<texture filename="assets/helicopter2.png" ID="helicopter2"/>
+			</TEXTURES>
+		<OBJECTS>
+			<!-- <object type="Player" x="0" y="0" width="128" height="55"
+				textureID="helicopter" numFrames="4"/> -->
+			<object type="Enemy" x="50" y="50" width="128" height="55"
+				textureID="helicopter2" numFrames="4"/>
+			<object type="Enemy" x="100" y="100" width="128" height="55"
+				textureID="helicopter2" numFrames="4"/>
+			<object type="Enemy" x="150" y="150" width="128" height="55"
+				textureID="helicopter2" numFrames="4"/>
+			<object type="Enemy" x="200" y="200" width="128" height="55"
+				textureID="helicopter2" numFrames="4"/>
+			<object type="Enemy" x="250" y="250" width="128" height="55"
+				textureID="helicopter2" numFrames="4"/>
+			<object type="Enemy" x="300" y="300" width="128" height="55"
+				textureID="helicopter2" numFrames="4"/>
+			<object type="Enemy" x="350" y="350" width="128" height="55"
+				textureID="helicopter2" numFrames="4"/>
+		<object type="Enemy" x="400" y="400" width="128" height="55"
+				textureID="helicopter2" numFrames="4"/>
+		<object type="Enemy" x="400" y="480" width="128" height="55"
+				textureID="helicopter2" numFrames="4"/>
+		</OBJECTS>
+	</PLAYSTATE>
+  
+  <!-- The Pause State-->
+  <PAUSESTATE>
+    <TEXTURES>
+      <texture filename="assets/main.png" ID="mainmenu"/>
+      <texture filename="assets/resume.png" ID="resume"/>
+      <texture filename="assets/restart.png" ID="restart"/>
+    </TEXTURES>
+
+    <OBJECTS>
+      <object type="MenuButton" x="300" y="100" width="200" height="80" textureID="mainmenu" numFrames="0" callbackID="1"/>
+      <object type="MenuButton" x="300" y="300" width="200" height="80" textureID="resume" numFrames="0" callbackID="2"/>
+      <object type="MenuButton" x="300" y="500" width="200" height="80" textureID="restart" numFrames="0" callbackID="3"/>
+    </OBJECTS>
+  </PAUSESTATE>
+	
+	<!-- The Game Over State -->
+	<GAMEOVER>
+	</GAMEOVER>
+	
+</STATES>
