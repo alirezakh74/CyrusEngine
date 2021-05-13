@@ -17,7 +17,7 @@ TileLayer::TileLayer(int tileSize, const std::vector<Tileset>& tilesets)
 
 void TileLayer::update()
 {
-    m_position += m_velocity;
+    //m_position += m_velocity;
 
     if (m_position.getY() <= (m_numRowsOfLevel * m_tileSize - (m_numRows * m_tileSize)))
     {

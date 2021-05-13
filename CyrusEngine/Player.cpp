@@ -13,7 +13,7 @@ Player::~Player()
 void Player::load(const LoaderParams* pParams)
 {
 	SDLGameObject::load(pParams);
-	m_scale = 0.1f;
+	m_scale = 0.2f;
 }
 
 void Player::update()
@@ -52,19 +52,56 @@ void Player::handleInput()
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
 	{
 		m_velocity.setX(-m_speed);
+		m_rotation = 270;
 	}
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
 	{
 		m_velocity.setX(m_speed);
+		m_rotation = 90;
 	}
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
 	{
 		m_velocity.setY(-m_speed);
+		m_rotation = 0;
 	}
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
 	{
 		m_velocity.setY(m_speed);
+		m_rotation = 180;
 	}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP)
+		&& TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)
+		)
+	{
+		m_velocity.setX(m_speed);
+		m_velocity.setY(-m_speed);
+		m_rotation = 45;
+	}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP)
+		&& TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)
+		)
+	{
+		m_velocity.setX(-m_speed);
+		m_velocity.setY(-m_speed);
+		m_rotation = 320;
+	}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN)
+		&& TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)
+		)
+	{
+		m_velocity.setX(m_speed);
+		m_velocity.setY(m_speed);
+		m_rotation = 135;
+	}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN)
+		&& TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)
+		)
+	{
+		m_velocity.setX(-m_speed);
+		m_velocity.setY(m_speed);
+		m_rotation = 225;
+	}
+
 
 	if (TheInputHandler::Instance()->getMouseButtonState(LEFT))
 	{
