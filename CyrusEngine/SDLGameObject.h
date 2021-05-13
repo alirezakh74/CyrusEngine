@@ -34,7 +34,6 @@ protected:
 
 	bool m_bFlipHorizontal;
 	int m_rotation;
-	//bool m_bScaled;
 	float m_scale;
 };
 
