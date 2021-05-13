@@ -16,6 +16,7 @@ public:
 	virtual void update();
 	virtual void draw();
 	virtual void clean();
+	virtual void setScale(float scale);
 
 protected:
 	std::string m_textureID;
@@ -32,5 +33,8 @@ protected:
 	int m_numFrames;
 
 	bool m_bFlipHorizontal;
+	int m_rotation;
+	//bool m_bScaled;
+	float m_scale;
 };
 

@@ -13,6 +13,7 @@ Player::~Player()
 void Player::load(const LoaderParams* pParams)
 {
 	SDLGameObject::load(pParams);
+	m_scale = 0.1f;
 }
 
 void Player::update()
@@ -55,6 +56,14 @@ void Player::handleInput()
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
 	{
 		m_velocity.setX(m_speed);
+	}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
+	{
+		m_velocity.setY(-m_speed);
+	}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
+	{
+		m_velocity.setY(m_speed);
 	}
 
 	if (TheInputHandler::Instance()->getMouseButtonState(LEFT))

@@ -4,7 +4,7 @@
 #include "Game.h"
 
 SDLGameObject::SDLGameObject()
-	: GameObject()
+	: GameObject(), m_rotation(0), m_scale(1)
 {
 	/*m_x = pParams->getX();
 	m_y = pParams->getY();*/
@@ -43,14 +43,14 @@ void SDLGameObject::update()
 	m_velocity += m_acceleration;
 	m_position += m_velocity;
 
-	if (m_velocity.getX() < 0)
+	/*if (m_velocity.getX() < 0)
 	{
 		m_bFlipHorizontal = false;
 	}
 	if (m_velocity.getX() > 0)
 	{
 		m_bFlipHorizontal = true;
-	}
+	}*/
 
 	m_currentFrame++;
 	if (m_currentFrame > m_numFrames)
@@ -63,14 +63,19 @@ void SDLGameObject::draw()
 {
 	if (!m_bFlipHorizontal)
 	{
-		TheTextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, TheGame::Instance()->getRenderer());
+		TheTextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, m_rotation, m_scale, TheGame::Instance()->getRenderer());
 	}
 	else
 	{
-		TheTextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, TheGame::Instance()->getRenderer(), SDL_FLIP_HORIZONTAL);
+		TheTextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, m_rotation, m_scale, TheGame::Instance()->getRenderer(), SDL_FLIP_HORIZONTAL);
 	}
 }
 
 void SDLGameObject::clean()
 {
+}
+
+void SDLGameObject::setScale(float scale)
+{
+	m_scale = scale;
 }
