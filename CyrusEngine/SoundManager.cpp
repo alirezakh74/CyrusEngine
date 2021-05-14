@@ -10,11 +10,11 @@ SoundManager* SoundManager::Instance()
     return s_pInstance;
 }
 
-bool SoundManager::load(std::string filename, std::string id, sound_type type)
+bool SoundManager::load(std::string fileName, std::string id, sound_type type)
 {
     if (type == SOUND_MUSIC)
     {
-        Mix_Music* pMusic = Mix_LoadMUS(filename.c_str());
+        Mix_Music* pMusic = Mix_LoadMUS(fileName.c_str());
         if (pMusic == NULL)
         {
             std::cout << "Could not load music: ERROR - " << Mix_GetError() << std::endl;
@@ -26,7 +26,7 @@ bool SoundManager::load(std::string filename, std::string id, sound_type type)
     }
     else if (type == SOUND_SFX)
     {
-        Mix_Chunk* pSfx = Mix_LoadWAV(filename.c_str());
+        Mix_Chunk* pSfx = Mix_LoadWAV(fileName.c_str());
         if (pSfx == NULL)
         {
             std::cout << "Could not load SFX: ERROR - " << Mix_GetError() << std::endl;
