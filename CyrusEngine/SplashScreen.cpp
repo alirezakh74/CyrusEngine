@@ -7,6 +7,7 @@
 #include "MainMenuState.h"
 #include "StateParser.h"
 #include <SDL2/SDL.h>
+#include "SoundManager.h"
 
 const std::string SplashScreen::s_splashID = "SPLASHSTATE";
 const Uint32 SplashScreen::s_splashTimeDelay = 5000;
