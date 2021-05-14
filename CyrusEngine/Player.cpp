@@ -1,6 +1,7 @@
 #include "Player.h"
 
 #include "InputHandler.h"
+#include <math.h>
 
 Player::Player() : SDLGameObject()
 {
@@ -33,6 +34,8 @@ void Player::update()
 	}*/
 
 	SDLGameObject::update();
+
+	//std::cout << "Velocity = " << sqrt(m_velocity.getX() * m_velocity.getX() + m_velocity.getY() * m_velocity.getY()) << "\n";
 }
 
 void Player::draw()
@@ -73,32 +76,32 @@ void Player::handleInput()
 		&& TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)
 		)
 	{
-		m_velocity.setX(m_speed);
-		m_velocity.setY(-m_speed);
+		m_velocity.setX(m_speed / sqrt(2));
+		m_velocity.setY(-m_speed / sqrt(2));
 		m_rotation = 45;
 	}
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP)
 		&& TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)
 		)
 	{
-		m_velocity.setX(-m_speed);
-		m_velocity.setY(-m_speed);
+		m_velocity.setX(-m_speed / sqrt(2));
+		m_velocity.setY(-m_speed / sqrt(2));
 		m_rotation = 320;
 	}
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN)
 		&& TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)
 		)
 	{
-		m_velocity.setX(m_speed);
-		m_velocity.setY(m_speed);
+		m_velocity.setX(m_speed / sqrt(2));
+		m_velocity.setY(m_speed / sqrt(2));
 		m_rotation = 135;
 	}
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN)
 		&& TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)
 		)
 	{
-		m_velocity.setX(-m_speed);
-		m_velocity.setY(m_speed);
+		m_velocity.setX(-m_speed / sqrt(2));
+		m_velocity.setY(m_speed / sqrt(2));
 		m_rotation = 225;
 	}
 

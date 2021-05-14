@@ -8,10 +8,10 @@ public:
 	Vector2D(float x = 0, float y = 0);
 	~Vector2D();
 
-	void setX(int x);
-	int getX() const;
-	void setY(int y);
-	int getY() const;
+	void setX(float x);
+	float getX() const;
+	void setY(float y);
+	float getY() const;
 
 	float length();
 	void normalize();

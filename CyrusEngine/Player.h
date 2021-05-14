@@ -19,7 +19,7 @@ public:
 
 private:
 
-	const int m_speed = 5;
+	const float m_speed = 4;
 };
 
 class PlayerCreator : public BaseCreator

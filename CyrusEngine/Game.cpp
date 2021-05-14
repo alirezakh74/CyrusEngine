@@ -12,6 +12,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "ImageObject.h"
+#include "SoundManager.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -116,6 +117,9 @@ bool Game::init()
 	// init Input Handler
 	TheInputHandler::Instance()->initializeJoysticks();
 
+	// init sound manager
+	TheSoundManager::Instance();
+
 	// register types
 	TheGameObjectFactory::Instance()->registerType("MenuButton", new MenuButtonCreator());
 	TheGameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
@@ -134,6 +138,7 @@ void Game::clean()
 {
 
 	TheInputHandler::Instance()->clean();
+	TheSoundManager::Instance()->clean();
 
 	m_pGameStateMachine->~GameStateMachine();
 	delete m_pGameStateMachine;

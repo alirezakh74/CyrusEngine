@@ -10,22 +10,22 @@ Vector2D::~Vector2D()
 {
 }
 
-void Vector2D::setX(int x)
+void Vector2D::setX(float x)
 {
 	m_x = x;
 }
 
-int Vector2D::getX() const
+float Vector2D::getX() const
 {
 	return m_x;
 }
 
-void Vector2D::setY(int y)
+void Vector2D::setY(float y)
 {
 	m_y = y;
 }
 
-int Vector2D::getY() const
+float Vector2D::getY() const
 {
 	return m_y;
 }

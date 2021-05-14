@@ -5,11 +5,15 @@
 #include "MainMenuState.h"
 //#include "StateParser.h"
 #include "PauseState.h"
+#include "SoundManager.h"
 
 const std::string PlayState::s_playStateID = "PLAYSTATE";
 
 PlayState::PlayState() : m_pLevel(nullptr)
 {
+    SoundManager* s_mgr = TheSoundManager::Instance();
+    s_mgr->load("assets/bg_music.wav", "bg_music", sound_type::SOUND_MUSIC);
+    s_mgr->playMusic("bg_music", 1);
 }
 
 PlayState::~PlayState()

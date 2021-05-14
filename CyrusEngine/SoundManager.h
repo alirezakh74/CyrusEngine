@@ -19,6 +19,9 @@ public:
 	bool load(std::string fileName, std::string id, sound_type type);
 	void playSound(std::string id, int loop);
 	void playMusic(std::string id, int loop);
+	void stopSound();
+	void stopMusic();
+	void clean();
 
 private:
 

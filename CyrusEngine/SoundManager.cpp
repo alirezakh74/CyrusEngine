@@ -50,6 +50,33 @@ void SoundManager::playMusic(std::string id, int loop)
     Mix_PlayMusic(m_musics[id], loop);
 }
 
+void SoundManager::stopSound()
+{
+    Mix_HaltChannel(-1);
+}
+
+void SoundManager::stopMusic()
+{
+    //Mix_PauseMusic();
+    Mix_HaltMusic();
+}
+
+void SoundManager::clean()
+{
+    for (auto sfx : m_sfxs)
+    {
+        Mix_FreeChunk(sfx.second);
+    }
+    for (auto music : m_musics)
+    {
+        Mix_FreeMusic(music.second);
+    }
+
+    Mix_CloseAudio();
+
+    //s_pInstance = nullptr;
+}
+
 SoundManager::SoundManager()
 {
     Mix_OpenAudio(22050, AUDIO_S16, 2, 4096);
@@ -57,5 +84,5 @@ SoundManager::SoundManager()
 
 SoundManager::~SoundManager()
 {
-    Mix_CloseAudio();
+    //Mix_CloseAudio();
 }
