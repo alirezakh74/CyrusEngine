@@ -13,9 +13,9 @@ const std::string MainMenuState::s_mainMenuStateID = "MAINMENUSTATE";
 
 MainMenuState::MainMenuState()
 {
-    /*SoundManager* s_mgr = SoundManager::Instance();
-    s_mgr->load("assets/bg_music.wav", "bg_music", sound_type::SOUND_MUSIC);
-    s_mgr->playMusic("bg_music", 2);*/
+    SoundManager* s_mgr = SoundManager::Instance();
+    s_mgr->load("assets/menu.mp3", "menu", sound_type::SOUND_MUSIC);
+    s_mgr->playMusic("menu", 1);
 }
 
 MainMenuState::~MainMenuState()
@@ -102,6 +102,7 @@ bool MainMenuState::onExit()
 
     //m_bExitingFromState = true;
 
+    //TheSoundManager::Instance()->stopMusic();
     GameState::onExit();
 
     std::cout << "exiting Main Menu State" << std::endl;

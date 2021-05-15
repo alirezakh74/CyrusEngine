@@ -48,6 +48,28 @@ void SoundManager::playSound(std::string id, int loop)
 void SoundManager::playMusic(std::string id, int loop)
 {
     Mix_PlayMusic(m_musics[id], loop);
+    //if (Mix_PlayingMusic() == 0)
+    //{
+    //    Mix_PlayMusic(m_musics[id], loop);
+    //}
+    //else
+    //{
+    //    // if music is played, pause it
+    //    Mix_PauseMusic();
+    //}
+}
+
+void SoundManager::pauseMusic()
+{
+    if (Mix_PlayingMusic() == 1)
+    {
+        Mix_PauseMusic();
+    }
+
+    /*if (Mix_PausedMusic() == 1)
+    {
+        Mix_ResumeMusic();
+    }*/
 }
 
 void SoundManager::stopSound()
@@ -79,7 +101,7 @@ void SoundManager::clean()
 
 SoundManager::SoundManager()
 {
-    Mix_OpenAudio(22050, AUDIO_S16, 2, 4096);
+    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
 }
 
 SoundManager::~SoundManager()

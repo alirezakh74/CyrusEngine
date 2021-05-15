@@ -12,8 +12,8 @@ const std::string PlayState::s_playStateID = "PLAYSTATE";
 PlayState::PlayState() : m_pLevel(nullptr)
 {
     SoundManager* s_mgr = TheSoundManager::Instance();
-    s_mgr->load("assets/bg_music.wav", "bg_music", sound_type::SOUND_MUSIC);
-    s_mgr->playMusic("bg_music", 1);
+    s_mgr->load("assets/bgm1.mp3", "bgm1", sound_type::SOUND_MUSIC);
+    s_mgr->playMusic("bgm1", 1);
 }
 
 PlayState::~PlayState()
@@ -69,6 +69,7 @@ bool PlayState::onEnter()
 
 bool PlayState::onExit()
 {
+    //TheSoundManager::Instance()->stopMusic();
     GameState::onExit();
 
     std::cout << "exiting Play State" << std::endl;
