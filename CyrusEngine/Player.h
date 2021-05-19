@@ -19,9 +19,15 @@ public:
 
 	void handleAmimation();
 
+	void resurrect();
+
 private:
 
 	const float m_speed = 4;
+
+	int m_invulnerable;
+	int m_invulnerableTime;
+	int m_invulnerableCounter;
 };
 
 class PlayerCreator : public BaseCreator

@@ -22,6 +22,9 @@ public:
 
 	GameStateMachine* getGameStateMachine() const;
 
+	void setPlayerLives(int lives) { m_playerLives = lives; }
+	int getPlayerLives() const { return m_playerLives; }
+
 	// Private Variables
 private:
 
@@ -36,6 +39,8 @@ private:
 	const int DELAY_TIME = 1000.0f / FPS;
 
 	GameStateMachine* m_pGameStateMachine;
+
+	int m_playerLives;
 
 	//Private Functions
 private:

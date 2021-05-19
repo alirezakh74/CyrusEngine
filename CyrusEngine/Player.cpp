@@ -2,6 +2,7 @@
 
 #include "InputHandler.h"
 #include <math.h>
+#include "Game.h"
 
 Player::Player() : ShooterObject()
 {
@@ -270,4 +271,22 @@ void Player::handleInput()
 
 void Player::handleAmimation()
 {
+}
+
+void Player::resurrect()
+{
+	TheGame::Instance()->setPlayerLives(TheGame::Instance()->getPlayerLives() - 1);
+
+	m_position.setX(100);
+	m_position.setY(200);
+	m_bDying = false;
+
+	m_textureID = "player";
+
+	m_currentFrame = 0;
+	m_numFrames = 1;
+	//m_width = ;
+	//m_height = ;
+	m_dyingCounter = 0;
+	m_invulnerable = true;
 }
