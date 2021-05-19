@@ -120,7 +120,7 @@
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayState.cpp" />
-    <ClCompile Include="SDLGameObject.cpp" />
+    <ClCompile Include="ShooterObject.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SplashScreen.cpp" />
     <ClCompile Include="StateParser.cpp" />
@@ -154,7 +154,7 @@
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
-    <ClInclude Include="SDLGameObject.h" />
+    <ClInclude Include="ShooterObject.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SplashScreen.h" />
     <ClInclude Include="StateParser.h" />
