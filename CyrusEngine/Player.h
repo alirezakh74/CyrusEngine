@@ -17,6 +17,8 @@ public:
 
 	void handleInput();
 
+	void handleAmimation();
+
 private:
 
 	const float m_speed = 4;

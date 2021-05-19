@@ -15,7 +15,7 @@ MainMenuState::MainMenuState()
 {
     SoundManager* s_mgr = SoundManager::Instance();
     s_mgr->load("assets/menu.mp3", "menu", sound_type::SOUND_MUSIC);
-    s_mgr->playMusic("menu", 1);
+    s_mgr->playMusic("menu", -1);
 }
 
 MainMenuState::~MainMenuState()

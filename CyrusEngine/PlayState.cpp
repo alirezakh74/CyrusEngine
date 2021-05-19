@@ -13,7 +13,7 @@ PlayState::PlayState() : m_pLevel(nullptr)
 {
     SoundManager* s_mgr = TheSoundManager::Instance();
     s_mgr->load("assets/bgm1.mp3", "bgm1", sound_type::SOUND_MUSIC);
-    s_mgr->playMusic("bgm1", 1);
+    s_mgr->playMusic("bgm1", -1);
 }
 
 PlayState::~PlayState()
