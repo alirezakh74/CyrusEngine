@@ -1,15 +1,15 @@
 #pragma once
 
-#include "SDLGameObject.h"
+#include "ShooterObject.h"
 #include "GameObjectFactory.h"
 
-class MenuButton : public SDLGameObject
+class MenuButton : public ShooterObject
 {
 public:
 	MenuButton();
 	~MenuButton();
 
-	void load(const LoaderParams* pParams);
+	void load(std::unique_ptr<LoaderParams> const &pParams);
 	void update();
 	void draw();
 	void clean();

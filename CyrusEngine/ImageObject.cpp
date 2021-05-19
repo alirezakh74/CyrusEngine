@@ -5,7 +5,7 @@
 
 #include "TextureManager.h"
 
-ImageObject::ImageObject() : SDLGameObject()
+ImageObject::ImageObject() : ShooterObject()
 {
 	m_bRightMoving = true;
 	//m_velocity.setX(m_speed);
@@ -17,9 +17,9 @@ ImageObject::~ImageObject()
 {
 }
 
-void ImageObject::load(const LoaderParams* pParams)
+void ImageObject::load(std::unique_ptr<LoaderParams> const& pParams)
 {
-	SDLGameObject::load(pParams);
+	ShooterObject::load(pParams);
 }
 
 void ImageObject::update()
@@ -73,15 +73,15 @@ void ImageObject::update()
 		m_bFlipHorizontal = false;
 	}
 
-	SDLGameObject::update();
+	ShooterObject::update();
 }
 
 void ImageObject::draw()
 {
-	SDLGameObject::draw();
+	ShooterObject::draw();
 }
 
 void ImageObject::clean()
 {
-	SDLGameObject::clean();
+	ShooterObject::clean();
 }

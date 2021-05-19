@@ -5,7 +5,7 @@
 #include "ShooterObject.h"
 
 ShooterObject::ShooterObject()
-	: GameObject(), m_rotation(0), m_scale(1)
+	: GameObject(), m_rotation(0), m_scale(1), m_moveSpeed(0)
 {
 	/*m_x = pParams->getX();
 	m_y = pParams->getY();*/

@@ -1,15 +1,15 @@
 #pragma once
 
-#include "SDLGameObject.h"
+#include "ShooterObject.h"
 #include "GameObjectFactory.h"
 
-class ImageObject : public SDLGameObject
+class ImageObject : public ShooterObject
 {
 public:
 	ImageObject();
 	~ImageObject();
 
-	virtual void load(const LoaderParams* pParams) override;
+	virtual void load(std::unique_ptr<LoaderParams> const &pParams) override;
 	virtual void update() override;
 	virtual void draw() override;
 	virtual void clean() override;

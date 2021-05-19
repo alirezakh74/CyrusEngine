@@ -86,7 +86,7 @@ void StateParser::parseObjects(TiXmlElement* pStateRoot, std::vector<GameObject*
         e->Attribute("callbackID", &callbackID);
 
         GameObject* pGameObject = TheGameObjectFactory::Instance()->create(typeObject);
-        pGameObject->load(new LoaderParams(x, y, width, height, textureID, numFrames, callbackID, animSpeed));
+        pGameObject->load(std::unique_ptr<LoaderParams>(new LoaderParams(x, y, width, height, textureID, numFrames, callbackID, animSpeed)));
         pObjects->push_back(pGameObject);
     }
 }

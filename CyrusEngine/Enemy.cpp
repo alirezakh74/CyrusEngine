@@ -1,9 +1,9 @@
 #include "Enemy.h"
 #include "globals.h"
 
-void Enemy::load(const LoaderParams* pParams)
+void Enemy::load(std::unique_ptr<LoaderParams> const& pParams)
 {
-	SDLGameObject::load(pParams);
+	ShooterObject::load(pParams);
 	m_velocity.setX(-m_speed);
 }
 
@@ -18,12 +18,12 @@ void Enemy::update()
 		m_velocity.setX(-m_speed);
 	}
 
-	SDLGameObject::update();
+	ShooterObject::update();
 }
 
 void Enemy::draw()
 {
-	SDLGameObject::draw();
+	ShooterObject::draw();
 }
 
 void Enemy::clean()

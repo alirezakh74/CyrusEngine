@@ -1,14 +1,14 @@
 #pragma once
 
-#include "SDLGameObject.h"
+#include "ShooterObject.h"
 #include "GameObjectFactory.h"
 
-class Enemy : public SDLGameObject
+class Enemy : public ShooterObject
 {
 
 public:
 
-	virtual void load(const LoaderParams* pParams);
+	virtual void load(std::unique_ptr<LoaderParams> const& pParams);
 	virtual void update();
 	virtual void draw();
 	virtual void clean();

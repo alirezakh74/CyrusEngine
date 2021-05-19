@@ -3,7 +3,7 @@
 #include "InputHandler.h"
 #include <math.h>
 
-Player::Player() : SDLGameObject()
+Player::Player() : ShooterObject()
 {
 }
 
@@ -11,9 +11,9 @@ Player::~Player()
 {
 }
 
-void Player::load(const LoaderParams* pParams)
+void Player::load(std::unique_ptr<LoaderParams> const& pParams)
 {
-	SDLGameObject::load(pParams);
+	ShooterObject::load(pParams);
 	m_scale = 0.2f;
 }
 
@@ -33,14 +33,14 @@ void Player::update()
 		m_currentFrame = int((SDL_GetTicks() / 100) % 4);
 	}*/
 
-	SDLGameObject::update();
+	ShooterObject::update();
 
 	//std::cout << "Velocity = " << sqrt(m_velocity.getX() * m_velocity.getX() + m_velocity.getY() * m_velocity.getY()) << "\n";
 }
 
 void Player::draw()
 {
-	SDLGameObject::draw();
+	ShooterObject::draw();
 }
 
 void Player::clean()
