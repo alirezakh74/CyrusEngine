@@ -18,7 +18,7 @@ public:
 	virtual void setScale(float scale);
 
 	virtual void collision() { }
-	std::string type() { return "SDLGameObject"; }
+	virtual std::string type() { return "SDLGameObject"; }
 
 protected:
 	ShooterObject();
