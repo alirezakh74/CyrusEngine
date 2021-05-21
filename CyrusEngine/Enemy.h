@@ -13,9 +13,18 @@ public:
 	virtual void draw();
 	virtual void clean();
 
-private:
+	virtual std::string type() override final { return "Enemy"; }
 
+private:
 	const int m_speed = 5;
+
+protected:
+	int m_health;
+
+	Enemy() : ShooterObject() {}
+	virtual ~Enemy() {}
+
+	friend class EnemyCreator;
 
 };
 
