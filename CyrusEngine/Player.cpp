@@ -20,8 +20,8 @@ void Player::load(std::unique_ptr<LoaderParams> const& pParams)
 
 void Player::update()
 {
-	//m_velocity.setX(0);
-	//m_velocity.setY(0);
+	m_velocity.setX(0);
+	m_velocity.setY(0);
 	handleInput();
 	/*if (m_velocity.getX() < 0)
 	{
@@ -50,8 +50,9 @@ void Player::clean()
 
 void Player::handleInput()
 {
-	m_velocity.setX(0);
-	m_velocity.setY(0);
+	//m_velocity.setX(0);
+	//m_velocity.setY(0);
+
 	// keyboard inputs
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
 	{
@@ -271,6 +272,28 @@ void Player::handleInput()
 
 void Player::handleAmimation()
 {
+	if (m_invulnerable)
+	{
+		if (m_invulnerableCounter == m_invulnerableTime)
+		{
+			m_invulnerable = false;
+			m_invulnerableCounter = 0;
+			m_alpha = 255;
+		}
+		else
+		{
+			if (m_alpha == 255)
+			{
+				m_alpha = 0;
+			}
+			else
+			{
+				m_alpha = 255;
+			}
+		}
+
+		m_invulnerableCounter++;
+	}
 }
 
 void Player::resurrect()
