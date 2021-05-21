@@ -19,9 +19,10 @@ private:
 	const int m_speed = 5;
 
 protected:
+
 	int m_health;
 
-	Enemy() : ShooterObject() {}
+	Enemy() : ShooterObject(), m_health(0) {}
 	virtual ~Enemy() {}
 
 	friend class EnemyCreator;
