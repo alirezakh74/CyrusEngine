@@ -1,6 +1,8 @@
 #include "BulletHandler.h"
 #include "globals.h"
 
+BulletHandler* BulletHandler::s_pInstance = NULL;
+
 void BulletHandler::addPlayerBullet(int x, int y, int width, int height, std::string textureID, int numFrames, Vector2D heading)
 {
 	PlayerBullet* pPlayerBullet = new PlayerBullet();
