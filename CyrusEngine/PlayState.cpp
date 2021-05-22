@@ -6,6 +6,7 @@
 //#include "StateParser.h"
 #include "PauseState.h"
 #include "SoundManager.h"
+#include "BulletHandler.h"
 
 const std::string PlayState::s_playStateID = "PLAYSTATE";
 
@@ -39,6 +40,8 @@ void PlayState::update()
 
     if(m_pLevel != nullptr)
         m_pLevel->update();
+
+    TheBulletHandler::Instance()->updateBullets();
 }
 
 void PlayState::render()
@@ -51,6 +54,8 @@ void PlayState::render()
 
     if(m_pLevel != nullptr)
         m_pLevel->render();
+
+    TheBulletHandler::Instance()->drawBullets();
 }
 
 bool PlayState::onEnter()
@@ -70,6 +75,7 @@ bool PlayState::onEnter()
 bool PlayState::onExit()
 {
     //TheSoundManager::Instance()->stopMusic();
+    TheBulletHandler::Instance()->clearBullets();
     GameState::onExit();
 
     std::cout << "exiting Play State" << std::endl;

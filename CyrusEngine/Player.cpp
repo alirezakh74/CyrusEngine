@@ -1,8 +1,10 @@
 #include "Player.h"
 
-#include "InputHandler.h"
 #include <math.h>
+
+#include "InputHandler.h"
 #include "Game.h"
+#include "BulletHandler.h"
 
 Player::Player() : ShooterObject()
 {
@@ -54,6 +56,10 @@ void Player::handleInput()
 	//m_velocity.setY(0);
 
 	// keyboard inputs
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE))
+	{
+		TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 5, m_position.getY() + (m_height * m_scale / 2) - 5, 11, 11, "bullet1", 1, Vector2D(0, -10));
+	}
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
 	{
 		m_velocity.setX(-m_speed);
@@ -114,6 +120,12 @@ void Player::handleInput()
 		//m_velocity.setY(0);
 
 		// joystick 1
+		// bullet button set up
+		if (TheInputHandler::Instance()->getButtonState(0, 1))
+		{
+			TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 5, m_position.getY() + (m_height * m_scale / 2) - 5, 11, 11, "bullet1", 1, Vector2D(0, -10));
+		}
+		// arrow buttons
 		if ((TheInputHandler::Instance()->getAxisY(0, 1) > 0 || TheInputHandler::Instance()->getAxisY(0, 1) < 0)
 			&& TheInputHandler::Instance()->getAxisX(0, 1) == 0)
 		{
