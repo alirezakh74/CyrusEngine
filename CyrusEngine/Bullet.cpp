@@ -2,7 +2,7 @@
 
 void PlayerBullet::load(std::unique_ptr<LoaderParams> const& pParams, Vector2D heading)
 {
-	ShooterObject::load(std::move(pParams));
+	ShooterObject::load(pParams);
 	m_heading = heading;
 }
 
