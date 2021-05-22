@@ -23,6 +23,9 @@ public:
 
 private:
 
+	BulletHandler();
+	~BulletHandler();
+
 	std::vector<PlayerBullet*> m_playerBullets;
 	std::vector<EnemyBullet*> m_enemyBullets;
 };
