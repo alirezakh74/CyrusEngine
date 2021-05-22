@@ -88,7 +88,6 @@
     <None Include="assets\map1.tmx" />
     <None Include="assets\map2.tmx" />
     <None Include="assets\maptest.tmx" />
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="assets\attack.xml" />
@@ -194,6 +193,9 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BulletHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -287,6 +289,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

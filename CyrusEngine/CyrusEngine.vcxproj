@@ -22,7 +22,6 @@
     <None Include="assets\map1.tmx" />
     <None Include="assets\map2.tmx" />
     <None Include="assets\maptest.tmx" />
-    <None Include="ClassDiagram.cd" />
     <None Include="tinyxml\docs\annotated.html" />
     <None Include="tinyxml\docs\classes.html" />
     <None Include="tinyxml\docs\classTiXmlAttribute-members.html" />
@@ -100,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletHandler.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletHandler.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
