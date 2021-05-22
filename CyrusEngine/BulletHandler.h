@@ -10,6 +10,14 @@ class BulletHandler
 {
 public:
 
+	static BulletHandler* Instance()
+	{
+		if (s_pInstance == NULL)
+			s_pInstance = new BulletHandler();
+
+		return s_pInstance;
+	}
+
 	void addPlayerBullet(int x, int y, int width, int height, std::string textureID, int numFrames, Vector2D heading);
 	void addEnemyBullet(int x, int y, int width, int height, std::string textureID, int numFrames, Vector2D heading);
 
@@ -25,6 +33,8 @@ private:
 
 	BulletHandler();
 	~BulletHandler();
+
+	static BulletHandler* s_pInstance;
 
 	std::vector<PlayerBullet*> m_playerBullets;
 	std::vector<EnemyBullet*> m_enemyBullets;
