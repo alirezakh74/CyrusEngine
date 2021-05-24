@@ -316,8 +316,9 @@ void Player::handleAmimation()
 			}
 
 			m_invulnerableLastTime = m_invulnerableCurrentTime;
-			SDL_SetTextureAlphaMod(TheTextureManager::Instance()->getTexture(m_textureID), m_alpha);
 		}
+
+		SDL_SetTextureAlphaMod(TheTextureManager::Instance()->getTexture(m_textureID), m_alpha);
 	}
 }
 
