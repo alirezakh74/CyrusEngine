@@ -25,6 +25,10 @@ public:
 	void setPlayerLives(int lives) { m_playerLives = lives; }
 	int getPlayerLives() const { return m_playerLives; }
 
+	//Uint32 getFrameStart() const { return m_frameStart; }
+	//Uint32 getFrameTime() const { return m_frameTime; }
+	Uint32 getDeltaTime() const { return m_deltaTime; }
+
 	// Private Variables
 private:
 
@@ -35,6 +39,9 @@ private:
 	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
 
+	Uint32 m_frameStart;
+	Uint32 m_frameTime;
+	Uint32 m_deltaTime;
 	const int FPS = 60;
 	const int DELAY_TIME = 1000.0f / FPS;
 

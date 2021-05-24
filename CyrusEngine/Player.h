@@ -25,9 +25,15 @@ private:
 
 	const float m_speed = 4;
 
-	int m_invulnerable;
-	int m_invulnerableTime;
-	int m_invulnerableCounter;
+	int m_bInvulnerable;
+	unsigned int m_invulnerableCurrentTime;
+	unsigned int m_invulnerableLastTime;
+	const unsigned int ALL_OF_INVULNERABLE_TIME = 3000/*ms*/;
+	const unsigned int TIME_PER_CHANGHE_ALPHA_MOD = 80/*ms*/;
+
+	bool m_bBullet;
+	unsigned int m_bulletTime;
+	int m_bulletCounter;
 };
 
 class PlayerCreator : public BaseCreator
