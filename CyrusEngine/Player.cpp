@@ -5,6 +5,7 @@
 #include "InputHandler.h"
 #include "Game.h"
 #include "BulletHandler.h"
+#include "TextureManager.h"
 
 Player::Player() : ShooterObject()
 {
@@ -18,6 +19,9 @@ void Player::load(std::unique_ptr<LoaderParams> const& pParams)
 {
 	ShooterObject::load(pParams);
 	m_scale = 0.2f;
+	m_bInvulnerable = true;
+	m_invulnerableCurrentTime = 0;
+	m_invulnerableLastTime = 0;
 }
 
 void Player::update()
@@ -25,6 +29,7 @@ void Player::update()
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 	handleInput();
+	handleAmimation();
 	/*if (m_velocity.getX() < 0)
 	{
 		m_bFlipHorizontal = true;
@@ -54,6 +59,11 @@ void Player::handleInput()
 {
 	//m_velocity.setX(0);
 	//m_velocity.setY(0);
+
+	if (m_bBullet)
+	{
+
+	}
 
 	// keyboard inputs
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE))
@@ -284,15 +294,17 @@ void Player::handleInput()
 
 void Player::handleAmimation()
 {
-	if (m_invulnerable)
+	m_invulnerableCurrentTime = TheGame::Instance()->getDeltaTime();
+	//std::cout << "dt = " << m_invulnerableCurrentTime << "\n";
+
+	if (m_bInvulnerable)
 	{
-		if (m_invulnerableCounter == m_invulnerableTime)
+		if (m_invulnerableCurrentTime >= ALL_OF_INVULNERABLE_TIME)
 		{
-			m_invulnerable = false;
-			m_invulnerableCounter = 0;
 			m_alpha = 255;
+			m_bInvulnerable = false;
 		}
-		else
+		else if(m_invulnerableCurrentTime >= m_invulnerableLastTime + TIME_PER_CHANGHE_ALPHA_MOD)
 		{
 			if (m_alpha == 255)
 			{
@@ -302,9 +314,10 @@ void Player::handleAmimation()
 			{
 				m_alpha = 255;
 			}
-		}
 
-		m_invulnerableCounter++;
+			m_invulnerableLastTime = m_invulnerableCurrentTime;
+			SDL_SetTextureAlphaMod(TheTextureManager::Instance()->getTexture(m_textureID), m_alpha);
+		}
 	}
 }
 
@@ -323,5 +336,5 @@ void Player::resurrect()
 	//m_width = ;
 	//m_height = ;
 	m_dyingCounter = 0;
-	m_invulnerable = true;
+	m_bInvulnerable = true;
 }

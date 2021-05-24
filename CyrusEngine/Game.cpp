@@ -19,6 +19,7 @@ Game* Game::s_pInstance = 0;
 Game::Game()
 {
 	//m_bRunning = init();
+	m_deltaTime = 0;
 }
 
 Game::~Game()
@@ -40,22 +41,24 @@ void Game::run()
 {
 	m_bRunning = init();
 
-	Uint32 frameStart, frameTime;
+	//Uint32 frameStart, frameTime;
 
 	while (m_bRunning)
 	{
-		frameStart = SDL_GetTicks();
+		m_frameStart = SDL_GetTicks();
 
 		handleEvents();
 		update();
 		draw();
 
-		frameTime = SDL_GetTicks() - frameStart;
+		m_frameTime = SDL_GetTicks() - m_frameStart;
 
-		if (frameTime < DELAY_TIME)
+		if (m_frameTime < DELAY_TIME)
 		{
-			SDL_Delay((int)DELAY_TIME - frameTime);
+			SDL_Delay((int)DELAY_TIME - m_frameTime);
 		}
+
+		m_deltaTime += SDL_GetTicks() - m_frameStart;
 	}
 
 	clean();
