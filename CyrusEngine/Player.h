@@ -30,7 +30,7 @@ private:
 	unsigned int m_invulnerableLastTime;
 	const unsigned int ALL_OF_INVULNERABLE_TIME = 2000/*ms*/;
 	const unsigned int TIME_PER_CHANGHE_ALPHA_MOD = 80/*ms*/;
-	const unsigned int FIRE_RATE_PER_TIME = 500/*ms*/;
+	const unsigned int FIRE_RATE_PER_TIME = 100/*ms*/;
 
 	/*bool m_bBullet;
 	unsigned int m_bulletCurrentTime;

@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "BulletHandler.h"
 #include "TextureManager.h"
+#include "SoundManager.h"
 
 Player::Player() : ShooterObject()
 {
@@ -25,6 +26,8 @@ void Player::load(std::unique_ptr<LoaderParams> const& pParams)
 	/*m_bBullet = true;
 	m_bulletCurrentTime = 0;
 	m_bulletLastTime = 0;*/
+
+	TheSoundManager::Instance()->load("assets/shoot5.wav", "bullet_sfx", sound_type::SOUND_SFX);
 }
 
 void Player::update()
@@ -84,6 +87,7 @@ void Player::handleInput()
 		{
 			m_bAllowFire = false;
 			TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 5, m_position.getY() + (m_height * m_scale / 2) - 5, 11, 11, "bullet1", 1, Vector2D(0, -10));
+			TheSoundManager::Instance()->playSound("bullet_sfx", 0);
 		}
 	}
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
@@ -153,6 +157,7 @@ void Player::handleInput()
 			{
 				m_bAllowFire = false;
 				TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 5, m_position.getY() + (m_height * m_scale / 2) - 5, 11, 11, "bullet1", 1, Vector2D(0, -10));
+				TheSoundManager::Instance()->playSound("bullet_sfx", 0);
 			}
 		}
 		// arrow buttons
