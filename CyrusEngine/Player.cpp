@@ -22,6 +22,9 @@ void Player::load(std::unique_ptr<LoaderParams> const& pParams)
 	m_bInvulnerable = true;
 	m_invulnerableCurrentTime = 0;
 	m_invulnerableLastTime = 0;
+	/*m_bBullet = true;
+	m_bulletCurrentTime = 0;
+	m_bulletLastTime = 0;*/
 }
 
 void Player::update()
@@ -30,6 +33,20 @@ void Player::update()
 	m_velocity.setY(0);
 	handleInput();
 	handleAmimation();
+
+	m_fireCurrentTime = TheGame::Instance()->getDeltaTime();
+	//std::cout << "time = " << m_fireCurrentTime << "\n";
+	if (m_fireCurrentTime - m_fireLastTime >= FIRE_RATE_PER_TIME)
+	{
+		m_fireLastTime = m_fireCurrentTime;
+		m_bAllowFire = true;
+	}
+
+	/*if (m_bBullet)
+	{
+
+	}*/
+
 	/*if (m_velocity.getX() < 0)
 	{
 		m_bFlipHorizontal = true;
@@ -60,15 +77,14 @@ void Player::handleInput()
 	//m_velocity.setX(0);
 	//m_velocity.setY(0);
 
-	if (m_bBullet)
-	{
-
-	}
-
 	// keyboard inputs
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE))
 	{
-		TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 5, m_position.getY() + (m_height * m_scale / 2) - 5, 11, 11, "bullet1", 1, Vector2D(0, -10));
+		if (m_bAllowFire)
+		{
+			m_bAllowFire = false;
+			TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 5, m_position.getY() + (m_height * m_scale / 2) - 5, 11, 11, "bullet1", 1, Vector2D(0, -10));
+		}
 	}
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
 	{
@@ -133,7 +149,11 @@ void Player::handleInput()
 		// bullet button set up
 		if (TheInputHandler::Instance()->getButtonState(0, 1))
 		{
-			TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 5, m_position.getY() + (m_height * m_scale / 2) - 5, 11, 11, "bullet1", 1, Vector2D(0, -10));
+			if (m_bAllowFire)
+			{
+				m_bAllowFire = false;
+				TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 5, m_position.getY() + (m_height * m_scale / 2) - 5, 11, 11, "bullet1", 1, Vector2D(0, -10));
+			}
 		}
 		// arrow buttons
 		if ((TheInputHandler::Instance()->getAxisY(0, 1) > 0 || TheInputHandler::Instance()->getAxisY(0, 1) < 0)
@@ -294,7 +314,8 @@ void Player::handleInput()
 
 void Player::handleAmimation()
 {
-	m_invulnerableCurrentTime = TheGame::Instance()->getDeltaTime();
+	static unsigned int initialTime = TheGame::Instance()->getDeltaTime();
+	m_invulnerableCurrentTime = TheGame::Instance()->getDeltaTime() - initialTime;
 	//std::cout << "dt = " << m_invulnerableCurrentTime << "\n";
 
 	if (m_bInvulnerable)

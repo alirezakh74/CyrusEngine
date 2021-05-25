@@ -28,12 +28,13 @@ private:
 	int m_bInvulnerable;
 	unsigned int m_invulnerableCurrentTime;
 	unsigned int m_invulnerableLastTime;
-	const unsigned int ALL_OF_INVULNERABLE_TIME = 3000/*ms*/;
+	const unsigned int ALL_OF_INVULNERABLE_TIME = 2000/*ms*/;
 	const unsigned int TIME_PER_CHANGHE_ALPHA_MOD = 80/*ms*/;
+	const unsigned int FIRE_RATE_PER_TIME = 500/*ms*/;
 
-	bool m_bBullet;
-	unsigned int m_bulletTime;
-	int m_bulletCounter;
+	/*bool m_bBullet;
+	unsigned int m_bulletCurrentTime;
+	unsigned int m_bulletLastTime;*/
 };
 
 class PlayerCreator : public BaseCreator
