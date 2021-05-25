@@ -19,6 +19,10 @@ ShooterObject::ShooterObject()
 	m_currentRow = 1;
 
 	m_bFlipHorizontal = false;*/
+
+	m_fireCurrentTime = 0;
+	m_fireLastTime = 0;
+	m_bAllowFire = true;
 }
 
 void ShooterObject::doDyingAnimation()

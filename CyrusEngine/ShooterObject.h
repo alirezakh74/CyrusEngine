@@ -25,8 +25,11 @@ protected:
 
 	void doDyingAnimation();
 
-	int m_bulletFiringSpeed;
-	int m_bulletCounter;
+	//int m_bulletFiringSpeed;
+	//int m_bulletCounter;
+	bool m_bAllowFire;
+	unsigned int m_fireCurrentTime;
+	unsigned int m_fireLastTime;
 
 	int m_moveSpeed;
 
