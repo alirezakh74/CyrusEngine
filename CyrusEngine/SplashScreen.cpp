@@ -1,12 +1,14 @@
 #include "SplashScreen.h"
 
+#include <SDL2/SDL.h>
+
 #include "TextureManager.h"
 #include "Game.h"
 #include "ImageObject.h"
 #include "InputHandler.h"
 #include "MainMenuState.h"
 #include "StateParser.h"
-#include <SDL2/SDL.h>
+#include "SoundManager.h"
 
 const std::string SplashScreen::s_splashID = "SPLASHSTATE";
 const Uint32 SplashScreen::s_splashTimeDelay = 5000;
@@ -14,6 +16,9 @@ const Uint32 SplashScreen::s_splashTimeDelay = 5000;
 SplashScreen::SplashScreen()
 {
 	m_timer = 0;
+
+	TheSoundManager::Instance()->load("assets/intro.mp3", "intro", sound_type::SOUND_MUSIC);
+	TheSoundManager::Instance()->playMusic("intro", 1);
 }
 
 SplashScreen::~SplashScreen()
