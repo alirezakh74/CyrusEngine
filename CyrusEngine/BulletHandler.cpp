@@ -79,4 +79,6 @@ BulletHandler::BulletHandler()
 
 BulletHandler::~BulletHandler()
 {
+	delete s_pInstance;
+	s_pInstance = NULL;
 }
