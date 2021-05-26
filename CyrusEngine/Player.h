@@ -32,6 +32,14 @@ private:
 	const unsigned int TIME_PER_CHANGHE_ALPHA_MOD = 80/*ms*/;
 	const unsigned int FIRE_RATE_PER_TIME = 100/*ms*/;
 
+	bool m_bAllowMissile;
+	unsigned int m_missileCurrentTime;
+	unsigned int m_missileLastTime;
+	const unsigned int MISSILE_RATE = 1000/*MS*/;
+	const float MISSILE_SPEED = 10;
+	float m_missileSpeedX;
+	float m_missileSpeedY;
+
 	/*bool m_bBullet;
 	unsigned int m_bulletCurrentTime;
 	unsigned int m_bulletLastTime;*/

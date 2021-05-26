@@ -27,7 +27,14 @@ void Player::load(std::unique_ptr<LoaderParams> const& pParams)
 	m_bulletCurrentTime = 0;
 	m_bulletLastTime = 0;*/
 
+	m_bAllowMissile = true;
+	m_missileCurrentTime = 0;
+	m_missileLastTime = 0;
+	m_missileSpeedX = 0;
+	m_missileSpeedY = 0;
+
 	TheSoundManager::Instance()->load("assets/shoot5.wav", "bullet_sfx", sound_type::SOUND_SFX);
+	TheSoundManager::Instance()->load("assets/shoot1.wav", "missile_sfx", sound_type::SOUND_SFX);
 }
 
 void Player::update()
@@ -43,6 +50,13 @@ void Player::update()
 	{
 		m_fireLastTime = m_fireCurrentTime;
 		m_bAllowFire = true;
+	}
+
+	m_missileCurrentTime = TheGame::Instance()->getDeltaTime();
+	if (m_missileCurrentTime - m_missileLastTime >= MISSILE_RATE)
+	{
+		m_missileLastTime = m_missileCurrentTime;
+		m_bAllowMissile = true;
 	}
 
 	/*if (m_bBullet)
@@ -88,6 +102,18 @@ void Player::handleInput()
 			m_bAllowFire = false;
 			TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 5, m_position.getY() + (m_height * m_scale / 2) - 5, 11, 11, "bullet1", 1, Vector2D(0, -10));
 			TheSoundManager::Instance()->playSound("bullet_sfx", 0);
+		}
+	}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_Z))
+	{
+		if (m_bAllowMissile)
+		{
+			m_missileSpeedX = MISSILE_SPEED * cos((m_rotation - 90) * M_PI / 180);
+			m_missileSpeedY = MISSILE_SPEED * sin((m_rotation - 90) * M_PI / 180);
+
+			m_bAllowMissile = false;
+			TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 5, m_position.getY() + (m_height * m_scale / 2) - 5, 11, 11, "bullet1", 1, Vector2D(m_missileSpeedX, m_missileSpeedY));
+			TheSoundManager::Instance()->playSound("missile_sfx", 0);
 		}
 	}
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
@@ -158,6 +184,15 @@ void Player::handleInput()
 				m_bAllowFire = false;
 				TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 5, m_position.getY() + (m_height * m_scale / 2) - 5, 11, 11, "bullet1", 1, Vector2D(0, -10));
 				TheSoundManager::Instance()->playSound("bullet_sfx", 0);
+			}
+		}
+		if (TheInputHandler::Instance()->getButtonState(0, 2))
+		{
+			if (m_bAllowMissile)
+			{
+				m_bAllowMissile = false;
+				TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 5, m_position.getY() + (m_height * m_scale / 2) - 5, 11, 11, "bullet1", 1, Vector2D(0, -10));
+				TheSoundManager::Instance()->playSound("missile_sfx", 0);
 			}
 		}
 		// arrow buttons
