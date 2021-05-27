@@ -225,9 +225,9 @@
   <object id="3" name="Jeep1" type="Player" x="336.061" y="431.333">
    <properties>
     <property name="numFrames" type="int" value="1"/>
-    <property name="textureHeight" type="int" value="320"/>
+    <property name="textureHeight" type="int" value="287"/>
     <property name="textureID" value="jeep"/>
-    <property name="textureWidth" type="int" value="287"/>
+    <property name="textureWidth" type="int" value="320"/>
    </properties>
   </object>
  </objectgroup>
