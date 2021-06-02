@@ -5,7 +5,7 @@
 #include "ShooterObject.h"
 
 ShooterObject::ShooterObject()
-	: GameObject(), m_rotation(0), m_scale(1), m_moveSpeed(0)
+	: GameObject(), m_scale(1), m_moveSpeed(0)
 {
 	/*m_x = pParams->getX();
 	m_y = pParams->getY();*/
@@ -53,6 +53,7 @@ void ShooterObject::load(std::unique_ptr<LoaderParams> const &pParams)
 	m_currentFrame = 1;
 	m_numFrames = pParams->getNumFrames();
 	m_bFlipHorizontal = false;
+	m_rotation = pParams->getRotation();
 }
 
 void ShooterObject::update()

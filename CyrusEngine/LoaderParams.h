@@ -5,9 +5,10 @@
 class LoaderParams
 {
 public:
-	LoaderParams(int x, int y, int w, int h, std::string textureID, int numFrames, int callbackID = 0, int animSpeed = 0)
+	LoaderParams(int x, int y, int w, int h, std::string textureID, int numFrames, int callbackID = 0, int animSpeed = 0, float rotation = 0)
 		: m_x(x), m_y(y), m_width(w), m_height(h), m_textureID(textureID)
 		, m_numFrames(numFrames), m_callbackID(callbackID), m_animSpeed(animSpeed)
+		, m_rotation(rotation)
 	{
 		/*m_x = x;
 		m_y = y;
@@ -24,6 +25,7 @@ public:
 	int getCallbackID() const { return m_callbackID; }
 	int getAnimSpeed() const { return m_animSpeed; }
 	std::string getTextureID() const { return m_textureID; }
+	float getRotation() const { return m_rotation; }
 
 private:
 
@@ -38,5 +40,7 @@ private:
 	int m_animSpeed;
 
 	std::string m_textureID;
+
+	float m_rotation;
 };
 

@@ -7,6 +7,7 @@
   <property name="enemy1" value="assets/enemy1.png"/>
   <property name="enemy2" value="assets/enemy2.png"/>
   <property name="jeep" value="assets/jeep.png"/>
+  <property name="missilePlayer" value="assets/missile_player.png"/>
  </properties>
  <tileset firstgid="1" name="block1" tilewidth="32" tileheight="32" tilecount="88" columns="8">
   <image source="assets/blocks4.png" width="256" height="352"/>

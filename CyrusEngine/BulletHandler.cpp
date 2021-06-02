@@ -3,15 +3,15 @@
 
 BulletHandler* BulletHandler::s_pInstance = NULL;
 
-void BulletHandler::addPlayerBullet(int x, int y, int width, int height, std::string textureID, int numFrames, Vector2D heading)
+void BulletHandler::addPlayerBullet(int x, int y, int width, int height, std::string textureID, int numFrames, Vector2D heading, float rotation)
 {
 	PlayerBullet* pPlayerBullet = new PlayerBullet();
-	pPlayerBullet->load(std::unique_ptr<LoaderParams>(new LoaderParams(x, y, width, height, textureID, numFrames)), heading);
+	pPlayerBullet->load(std::unique_ptr<LoaderParams>(new LoaderParams(x, y, width, height, textureID, numFrames, 0, 0, rotation)), heading);
 
 	m_playerBullets.push_back(pPlayerBullet);
 }
 
-void BulletHandler::addEnemyBullet(int x, int y, int width, int height, std::string textureID, int numFrames, Vector2D heading)
+void BulletHandler::addEnemyBullet(int x, int y, int width, int height, std::string textureID, int numFrames, Vector2D heading, float angle)
 {
 	EnemyBullet* pEnemyBullet = new EnemyBullet();
 	pEnemyBullet->load(std::unique_ptr<LoaderParams>(new LoaderParams(x, y, width, height, textureID, numFrames)), heading);

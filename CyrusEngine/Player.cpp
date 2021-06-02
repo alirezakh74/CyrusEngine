@@ -112,7 +112,7 @@ void Player::handleInput()
 			m_missileSpeedY = MISSILE_SPEED * sin(m_rotation * M_PI / 180);
 
 			m_bAllowMissile = false;
-			TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 5, m_position.getY() + (m_height * m_scale / 2) - 5, 11, 11, "bullet1", 1, Vector2D(m_missileSpeedX, m_missileSpeedY));
+			TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 15, m_position.getY() + (m_height * m_scale / 2) - 5, 30, 15, "missilePlayer", 1, Vector2D(m_missileSpeedX, m_missileSpeedY), m_rotation);
 			TheSoundManager::Instance()->playSound("missile_sfx", 0);
 		}
 	}
@@ -194,7 +194,8 @@ void Player::handleInput()
 				m_missileSpeedY = MISSILE_SPEED * sin(m_rotation * M_PI / 180);
 
 				m_bAllowMissile = false;
-				TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 5, m_position.getY() + (m_height * m_scale / 2) - 5, 11, 11, "bullet1", 1, Vector2D(m_missileSpeedX, m_missileSpeedY)); TheSoundManager::Instance()->playSound("missile_sfx", 0);
+				TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 15, m_position.getY() + (m_height * m_scale / 2) - 5, 30, 15, "missilePlayer", 1, Vector2D(m_missileSpeedX, m_missileSpeedY), m_rotation);
+				TheSoundManager::Instance()->playSound("missile_sfx", 0);
 			}
 		}
 		// arrow buttons

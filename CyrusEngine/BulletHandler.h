@@ -18,8 +18,8 @@ public:
 		return s_pInstance;
 	}
 
-	void addPlayerBullet(int x, int y, int width, int height, std::string textureID, int numFrames, Vector2D heading);
-	void addEnemyBullet(int x, int y, int width, int height, std::string textureID, int numFrames, Vector2D heading);
+	void addPlayerBullet(int x, int y, int width, int height, std::string textureID, int numFrames, Vector2D heading, float rotation = 0);
+	void addEnemyBullet(int x, int y, int width, int height, std::string textureID, int numFrames, Vector2D heading, float rotation = 0);
 
 	void updateBullets();
 	void drawBullets();
