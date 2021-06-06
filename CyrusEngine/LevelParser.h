@@ -16,6 +16,10 @@ public:
 
 private:
 
+#if defined(ANDROID)
+	bool read_text(const char* source_file, char** destination);
+#endif
+
 	void parseTilesets(TiXmlElement* pTilesetRoot, std::vector<Tileset>* pTilesets);
 	void parseTileLayer(TiXmlElement* pTileRoot, std::vector<Layer*>* pLayers, const std::vector<Tileset>* pTilesets);
 
