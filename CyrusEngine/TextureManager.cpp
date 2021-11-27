@@ -24,6 +24,11 @@ TextureManager* TextureManager::Instance()
 
 bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* renderer)
 {
+	if (m_textureMap[id] != nullptr)
+	{
+		return true;
+	}
+
 	SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
 
 	if (pTempSurface == 0)
