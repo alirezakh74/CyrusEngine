@@ -78,6 +78,8 @@ bool PlayState::onExit()
     TheBulletHandler::Instance()->clearBullets();
     GameState::onExit();
 
+	m_pLevel->~Level();
+
     std::cout << "exiting Play State" << std::endl;
     return true;
 }

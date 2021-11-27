@@ -22,4 +22,6 @@ Level::Level()
 
 Level::~Level()
 {
+	m_tilesets.clear();
+	m_layers.clear();
 }
