@@ -16,8 +16,8 @@
 	<!--The Main Menu State-->
 	<MAINMENUSTATE>
 		<TEXTURES>
-			<texture filename="assets/play.png" ID="playbutton"/>
-			<texture filename="assets/exit.png" ID="exitbutton"/>
+			<texture filename="assets/playFa.png" ID="playbutton"/>
+			<texture filename="assets/exitFa.png" ID="exitbutton"/>
 		</TEXTURES>
 		
 		<OBJECTS>
