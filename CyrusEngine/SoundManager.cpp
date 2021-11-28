@@ -14,6 +14,11 @@ bool SoundManager::load(std::string fileName, std::string id, sound_type type)
 {
     if (type == SOUND_MUSIC)
     {
+		if (m_musics[id] != nullptr)
+		{
+			return true;
+		}
+
         Mix_Music* pMusic = Mix_LoadMUS(fileName.c_str());
         if (pMusic == NULL)
         {
@@ -26,6 +31,11 @@ bool SoundManager::load(std::string fileName, std::string id, sound_type type)
     }
     else if (type == SOUND_SFX)
     {
+		if (m_sfxs[id] != nullptr)
+		{
+			return true;
+		}
+
         Mix_Chunk* pSfx = Mix_LoadWAV(fileName.c_str());
         if (pSfx == NULL)
         {
