@@ -29,6 +29,8 @@ public:
 	void update();
 	void render();
 
+	void clear();
+
 	std::vector<Tileset>* getTilesets() { return &m_tilesets; }
 	std::vector<Layer*>* getLayers() { return &m_layers; }
 
