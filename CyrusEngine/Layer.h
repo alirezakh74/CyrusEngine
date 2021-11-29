@@ -7,9 +7,11 @@ public:
 	virtual void update() = 0;
 	virtual void render() = 0;
 
+	~Layer() {}
+
 protected:
 
-	~Layer() {}
+	//~Layer() {}
 
 private:
 
