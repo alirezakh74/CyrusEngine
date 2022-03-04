@@ -11,6 +11,7 @@ class TileLayer : public Layer
 public:
 
 	TileLayer(int tileSize, const std::vector<Tileset>& tilesets);
+	~TileLayer();
 
 	virtual void update() override;
 	virtual void render() override;
