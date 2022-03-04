@@ -20,6 +20,7 @@ public:
 	void handleAmimation();
 
 	void resurrect();
+	void setVulnerable();
 
 private:
 
@@ -28,9 +29,12 @@ private:
 	int m_bInvulnerable;
 	unsigned int m_invulnerableCurrentTime;
 	unsigned int m_invulnerableLastTime;
+	unsigned int m_startInvulnerableTime;
 	const unsigned int ALL_OF_INVULNERABLE_TIME = 2000/*ms*/;
 	const unsigned int TIME_PER_CHANGHE_ALPHA_MOD = 80/*ms*/;
 	const unsigned int FIRE_RATE_PER_TIME = 100/*ms*/;
+	bool m_bStartInvulnerable;
+	bool m_bStartTime;
 
 	bool m_bAllowMissile;
 	unsigned int m_missileCurrentTime;

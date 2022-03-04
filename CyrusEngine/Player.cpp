@@ -23,6 +23,9 @@ void Player::load(std::unique_ptr<LoaderParams> const& pParams)
 	m_bInvulnerable = true;
 	m_invulnerableCurrentTime = 0;
 	m_invulnerableLastTime = 0;
+	m_bStartInvulnerable = true;
+	m_startInvulnerableTime = 0;
+	m_bStartTime = false;
 	/*m_bBullet = true;
 	m_bulletCurrentTime = 0;
 	m_bulletLastTime = 0;*/
@@ -102,6 +105,13 @@ void Player::handleInput()
 			m_bAllowFire = false;
 			TheBulletHandler::Instance()->addPlayerBullet(m_position.getX() + (m_width * m_scale / 2) - 5, m_position.getY() + (m_height * m_scale / 2) - 5, 11, 11, "bullet1", 1, Vector2D(0, -10));
 			TheSoundManager::Instance()->playSound("bullet_sfx", 0);
+		}
+	}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_H))
+	{
+		if (!m_bInvulnerable)
+		{
+			setVulnerable();
 		}
 	}
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_Z))
@@ -358,7 +368,24 @@ void Player::handleInput()
 void Player::handleAmimation()
 {
 	static unsigned int initialTime = TheGame::Instance()->getDeltaTime();
-	m_invulnerableCurrentTime = TheGame::Instance()->getDeltaTime() - initialTime;
+	if (m_bStartInvulnerable)
+	{
+		m_invulnerableCurrentTime = TheGame::Instance()->getDeltaTime() - initialTime;
+		if (m_invulnerableCurrentTime >= ALL_OF_INVULNERABLE_TIME)
+		{
+			m_bStartInvulnerable = false;
+		}
+
+	}
+	else
+	{
+		if (m_bStartTime)
+		{
+			m_startInvulnerableTime = TheGame::Instance()->getDeltaTime();
+			m_bStartTime = false;
+		}
+		m_invulnerableCurrentTime = TheGame::Instance()->getDeltaTime() - m_startInvulnerableTime;
+	}
 	//std::cout << "dt = " << m_invulnerableCurrentTime << "\n";
 
 	if (m_bInvulnerable)
@@ -402,4 +429,12 @@ void Player::resurrect()
 	//m_height = ;
 	m_dyingCounter = 0;
 	m_bInvulnerable = true;
+}
+
+void Player::setVulnerable()
+{
+	m_invulnerableCurrentTime = 0;
+	m_invulnerableLastTime = 0;
+	m_bInvulnerable = true;
+	m_bStartTime = true;
 }
