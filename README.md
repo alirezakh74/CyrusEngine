@@ -1,5 +1,5 @@
 # CyrusEngine
-2d game engine powered by SDL2
+2d game engine with C++ and powered by SDL2
 
 
 
